@@ -56,7 +56,14 @@ end
 
 noisy_train_x = train_x + train_noise;
 noisy_test_x = test_x + test_noise;
-test_x(test_x > 1) = 1;
+
+noisy_train_x = train_x + train_noise;
+noisy_train_x(noisy_train_x < 0) = 0;
+noisy_train_x(noisy_train_x > 1) = 1;
+
+noisy_test_x = test_x + test_noise;
+noisy_test_x(noisy_test_x < 0) = 0;
+noisy_test_x(noisy_test_x > 1) = 1;
 
 %% Initialize net
 % nn = nnsetup([784 1200 1200 800 800 10]);
